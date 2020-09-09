@@ -74,6 +74,7 @@
           <img src="../img/NFC.png" class="img-fluid" alt="">
           <h2 class="text-white mb-4">NFC Standings</h2>
 
+
           <!-- NFC North -->
           <h4 class="text-white mb-4">North</h4>
           <p1 class="text-white-50">
@@ -114,6 +115,7 @@
             <p style="list-style-type: decimal;" id="nfcNorth"></p>
           </p1>
 
+
           <!-- NFC East -->
           <h4 class="text-white mb-4">East</h4>
           <p1 class="text-white-50">
@@ -153,6 +155,7 @@
             </script>
             <p style="list-style-type: decimal;" id="nfcEast"></p>
           </p1>
+
 
           <!-- NFC South -->
           <h4 class="text-white mb-4">South</h4>
@@ -214,10 +217,10 @@
             </script>
             <script>
               const NFCWestTeams = {
-                Saints: { win: 0, lose: 0 },
-                Falcons: { win: 0, lose: 0 },
-                Buccaneers: { win: 0, lose: 0 },
-                Panthers: { win: 0, lose: 0 }
+                Cardinals: { win: 0, lose: 0 },
+                '49ers': { win: 0, lose: 0 },
+                Seahawks: { win: 0, lose: 0 },
+                Rams: { win: 0, lose: 0 }
               }
 
               const renderNFCWest = () => {
@@ -252,34 +255,173 @@
         <div class="col-lg-8 mx-auto">
           <img src="../img/AFC.png" class="img-fluid" alt="">
           <h2 class="text-white mb-4">AFC Standings</h2>
+
+
+          <!-- AFC North -->
           <h4 class="text-white mb-4">North</h4>
-          <p class="text-white-50">1. Ravens (0,0)<br>
-            2. Steelers (0,0)<br>
-            3. Browns (0,0)<br>
-            4. Bengals (0,0)
-          </p>
+          <p1 class="text-white-50">
+            <script>
+              window.addEventListener("load", function () { // when the page loads
+                const afcNorth = document.getElementById("afcNorth");
+                renderAFCNorth(); // initialise the UL
+                afcNorth.addEventListener("click", function (e) { // clicking W or L
+                  const targeted = e.target;
+                  if (targeted.classList.contains("play")) { // it's a button
+                    const result = targeted.value === "W" ? "win" : "lose"; // win or lose?
+                    AFCNorthTeams[targeted.name][result]++; // AFCNorthTeams["TEAMNAME"]["win"] for example
+                    renderAFCNorth();
+                  }
+                })
+              })
+            </script>
+            <script>
+              const AFCNorthTeams = {
+                Ravens: { win: 0, lose: 0 },
+                Bengals: { win: 0, lose: 0 },
+                Steelers: { win: 0, lose: 0 },
+                Browns: { win: 0, lose: 0 }
+              }
+
+              const renderAFCNorth = () => {
+                afcNorth.innerHTML = "";
+                Object.keys(AFCNorthTeams).sort((a, b) => AFCNorthTeams[b].win - AFCNorthTeams[a].win)
+                  .forEach(key => {
+                    const html = [];
+                    html.push(`<li><span class="name">${key}</span>: (<span id="${key}W">${AFCNorthTeams[key].win}</span>, <span id="${key}L">${AFCNorthTeams[key].lose}</span>)`)
+                    html.push(` <input type="button" value="W" id="slider" class="play" name="${key}"/>`)
+                    html.push(` <input type="button" value="L" id="slider" class="play" name="${key}"/></li>`)
+                    afcNorth.innerHTML += html.join("");
+                  });
+              }
+            </script>
+            <p style="list-style-type: decimal;" id="afcNorth"></p>
+          </p1>
+
+          <!-- AFC East -->
           <h4 class="text-white mb-4">East</h4>
-          <p class="text-white-50">1. Patriots (0,0)<br>
-            2. Bills (0,0)<br>
-            3. Jets (0,0)<br>
-            4. Dolphins (0,0)
-          </p>
+          <p1 class="text-white-50">
+            <script>
+              window.addEventListener("load", function () { // when the page loads
+                const afcEast = document.getElementById("afcEast");
+                renderAFCEast(); // initialise the UL
+                afcEast.addEventListener("click", function (e) { // clicking W or L
+                  const targeted = e.target;
+                  if (targeted.classList.contains("play")) { // it's a button
+                    const result = targeted.value === "W" ? "win" : "lose"; // win or lose?
+                    AFCEastTeams[targeted.name][result]++; // AFCEastTeams["TEAMNAME"]["win"] for example
+                    renderAFCEast();
+                  }
+                })
+              })
+            </script>
+            <script>
+              const AFCEastTeams = {
+                Patriots: { win: 0, lose: 0 },
+                Bills: { win: 0, lose: 0 },
+                Jets: { win: 0, lose: 0 },
+                Dolphins: { win: 0, lose: 0 }
+              }
+
+              const renderAFCEast = () => {
+                afcEast.innerHTML = "";
+                Object.keys(AFCEastTeams).sort((a, b) => AFCEastTeams[b].win - AFCEastTeams[a].win)
+                  .forEach(key => {
+                    const html = [];
+                    html.push(`<li><span class="name">${key}</span>: (<span id="${key}W">${AFCEastTeams[key].win}</span>, <span id="${key}L">${AFCEastTeams[key].lose}</span>)`)
+                    html.push(` <input type="button" value="W" id="slider" class="play" name="${key}"/>`)
+                    html.push(` <input type="button" value="L" id="slider" class="play" name="${key}"/></li>`)
+                    afcEast.innerHTML += html.join("");
+                  });
+              }
+            </script>
+            <p style="list-style-type: decimal;" id="afcEast"></p>
+          </p1>
+
+          <!-- AFC South -->
           <h4 class="text-white mb-4">South</h4>
-          <p class="text-white-50">1. Texans (0,0)<br>
-            2. Titans (0,0)<br>
-            3. Colts (0,0)<br>
-            4. Jaguars (0,0)
-          </p>
+          <p1 class="text-white-50">
+            <script>
+              window.addEventListener("load", function () { // when the page loads
+                const afcSouth = document.getElementById("afcSouth");
+                renderAFCSouth(); // initialise the UL
+                afcSouth.addEventListener("click", function (e) { // clicking W or L
+                  const targeted = e.target;
+                  if (targeted.classList.contains("play")) { // it's a button
+                    const result = targeted.value === "W" ? "win" : "lose"; // win or lose?
+                    AFCSouthTeams[targeted.name][result]++; // AFCSouthTeams["TEAMNAME"]["win"] for example
+                    renderAFCSouth();
+                  }
+                })
+              })
+            </script>
+            <script>
+              const AFCSouthTeams = {
+                Texans: { win: 0, lose: 0 },
+                Titans: { win: 0, lose: 0 },
+                Colts: { win: 0, lose: 0 },
+                Jaguars: { win: 0, lose: 0 }
+              }
+
+              const renderAFCSouth = () => {
+                afcSouth.innerHTML = "";
+                Object.keys(AFCSouthTeams).sort((a, b) => AFCSouthTeams[b].win - AFCSouthTeams[a].win)
+                  .forEach(key => {
+                    const html = [];
+                    html.push(`<li><span class="name">${key}</span>: (<span id="${key}W">${AFCSouthTeams[key].win}</span>, <span id="${key}L">${AFCSouthTeams[key].lose}</span>)`)
+                    html.push(` <input type="button" value="W" id="slider" class="play" name="${key}"/>`)
+                    html.push(` <input type="button" value="L" id="slider" class="play" name="${key}"/></li>`)
+                    afcSouth.innerHTML += html.join("");
+                  });
+              }
+            </script>
+            <p style="list-style-type: decimal;" id="afcSouth"></p>
+          </p1>
+
+          <!-- AFC West -->
           <h4 class="text-white mb-4">West</h4>
-          <p class="text-white-50">1. Chiefs (0,0)<br>
-            2. Broncos (0,0)<br>
-            3. Raiders (0,0)<br>
-            4. Chargers (0,0)
-          </p>
+          <p1 class="text-white-50">
+            <script>
+              window.addEventListener("load", function () { // when the page loads
+                const afcWest = document.getElementById("afcWest");
+                renderAFCWest(); // initialise the UL
+                afcWest.addEventListener("click", function (e) { // clicking W or L
+                  const targeted = e.target;
+                  if (targeted.classList.contains("play")) { // it's a button
+                    const result = targeted.value === "W" ? "win" : "lose"; // win or lose?
+                    AFCWestTeams[targeted.name][result]++; // AFCWestTeams["TEAMNAME"]["win"] for example
+                    renderAFCWest();
+                  }
+                })
+              })
+            </script>
+            <script>
+              const AFCWestTeams = {
+                Chiefs: { win: 0, lose: 0 },
+                Raiders: { win: 0, lose: 0 },
+                Chargers: { win: 0, lose: 0 },
+                Broncos: { win: 0, lose: 0 }
+              }
+
+              const renderAFCWest = () => {
+                afcWest.innerHTML = "";
+                Object.keys(AFCWestTeams).sort((a, b) => AFCWestTeams[b].win - AFCWestTeams[a].win)
+                  .forEach(key => {
+                    const html = [];
+                    html.push(`<li><span class="name">${key}</span>: (<span id="${key}W">${AFCWestTeams[key].win}</span>, <span id="${key}L">${AFCWestTeams[key].lose}</span>)`)
+                    html.push(` <input type="button" value="W" id="slider" class="play" name="${key}"/>`)
+                    html.push(` <input type="button" value="L" id="slider" class="play" name="${key}"/></li>`)
+                    afcWest.innerHTML += html.join("");
+                  });
+              }
+            </script>
+            <p style="list-style-type: decimal;" id="afcWest"></p>
+          </p1>
         </div>
       </div>
     </div>
   </section>
+
+
 
   <!-- Playoff Section -->
   <section id="playoff" class="playoff-section text-center">
@@ -313,6 +455,8 @@
     </div>
   </section>
 
+
+  
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
     <div class="container">
