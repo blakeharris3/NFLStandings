@@ -1,5 +1,3 @@
 node_modules
 .sass-cache
 bower_components
-.firebase
-package-lock.json

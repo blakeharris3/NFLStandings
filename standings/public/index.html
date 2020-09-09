@@ -107,25 +107,25 @@
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
   <script>
-    function passWord() {
-      var testV = 1;
-      var pass1 = prompt('Password: ');
-      while (testV < 3) {
-        if (!pass1)
-          history.go(-1);
-        if (pass1.toLowerCase() == "1208") {
-          alert('Correct');
-          window.open('/Users/Blake/Code/NFL/standings/public/pages/edit.html');
-          break;
-        }
-        testV += 1;
-        var pass1 =
-          prompt('Access Denied - Password Incorrect, Please Try Again.', 'Password');
-      }
-      if (pass1.toLowerCase() != "password" & testV == 3)
-        history.go(-1);
-      return " ";
-    } 
+    // function passWord() {
+    //   var testV = 1;
+    //   var pass1 = prompt('Password: ');
+    //   while (testV < 3) {
+    //     if (!pass1)
+    //       history.go(-1);
+    //     if (pass1.toLowerCase() == "1208") {
+    //       alert('Correct');
+    //       window.open('/Users/Blake/Code/NFL/standings/public/pages/edit.html');
+    //       break;
+    //     }
+    //     testV += 1;
+    //     var pass1 =
+    //       prompt('Access Denied - Password Incorrect, Please Try Again.', 'Password');
+    //   }
+    //   if (pass1.toLowerCase() != "password" & testV == 3)
+    //     history.go(-1);
+    //   return " ";
+    // } 
   </script>
 
 </body>
