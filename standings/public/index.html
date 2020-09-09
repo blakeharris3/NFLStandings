@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>NFL Standings</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="./css/grayscale.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="./pages/view.html">NFL Standings</a>
+          <li class="nav-item">
+            <a class="nav-link" href="./pages/edit.html" onclick="passWord()">Change Standings</a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50">
+    <div class="container">
+      NFL Standings as of September 9th, 2020<br>
+      Blake Harris
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Cloud Firestore through Firebase
+    firebase.initializeApp({
+      apiKey: '### FIREBASE API KEY ###',
+      authDomain: '### FIREBASE AUTH DOMAIN ###',
+      projectId: '### CLOUD FIRESTORE PROJECT ID ###'
+    });
+
+    var db = firebase.firestore();
+  </script>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="../js/grayscale.min.js"></script>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAI2xgU5nHRyQqUvYzP3hhtE77UMwL1D-o",
+      authDomain: "standings-nfl.firebaseapp.com",
+      databaseURL: "https://standings-nfl.firebaseio.com",
+      projectId: "standings-nfl",
+      storageBucket: "standings-nfl.appspot.com",
+      messagingSenderId: "900208238260",
+      appId: "1:900208238260:web:e44741873d0e29ab5881e1",
+      measurementId: "G-W8QGD9XT08"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+  <script>
+    function passWord() {
+      var testV = 1;
+      var pass1 = prompt('Password: ');
+      while (testV < 3) {
+        if (!pass1)
+          history.go(-1);
+        if (pass1.toLowerCase() == "1208") {
+          alert('Correct');
+          window.open('/Users/Blake/Code/NFL/standings/public/pages/edit.html');
+          break;
+        }
+        testV += 1;
+        var pass1 =
+          prompt('Access Denied - Password Incorrect, Please Try Again.', 'Password');
+      }
+      if (pass1.toLowerCase() != "password" & testV == 3)
+        history.go(-1);
+      return " ";
+    } 
+  </script>
+
+</body>
+
+</html>

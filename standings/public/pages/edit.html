@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>NFL Standings</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../css/grayscale.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="../index.html">Home</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#NFC">NFC Standings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#AFC">AFC Standings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#playoff">Playoff Picture</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+      <div class="mx-auto text-center">
+        <h1 class="mx-auto my-0 text-uppercase">NFL Standings</h1>
+        <br>
+        <br>
+        <a href="#NFC" class="btn btn-primary js-scroll-trigger">Let's Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- NFC Section -->
+  <section id="NFC" class="nfc-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <img src="../img/NFC.png" class="img-fluid" alt="">
+          <h2 class="text-white mb-4">NFC Standings</h2>
+          <h4 class="text-white mb-4">North</h4>
+          <p1 class="text-white-50">
+            <script>
+              window.addEventListener("load", function () { // when the page loads
+                const teams = document.getElementById("teams");
+                renderStandings(); // initialise the UL
+                teams.addEventListener("click", function (e) { // clicking W or L
+                  const targeted = e.target;
+                  if (targeted.classList.contains("play")) { // it's a button
+                    const result = targeted.value === "W" ? "win" : "lose"; // win or lose?
+                    results[targeted.name][result]++; // results["TEAMNAME"]["win"] for example
+                    renderStandings();
+                  }
+                })
+              })
+            </script>
+            <script>
+              const results = {
+                Packers: { win: 0, lose: 0 },
+                Vikings: { win: 0, lose: 0 },
+                Bears: { win: 0, lose: 0 },
+                Lions: { win: 0, lose: 0 }
+              }
+
+              const renderStandings = () => {
+                teams.innerHTML = "";
+                Object.keys(results).sort((a, b) => results[b].win - results[a].win)
+                  .forEach(key => {
+                    const html = [];
+                    html.push(`<li><span class="name">${key}</span>: (<span id="${key}W">${results[key].win}</span>, <span id="${key}L">${results[key].lose}</span>)`)
+                    html.push(` <input type="button" value="W" id="slider" class="play" name="${key}"/>`)
+                    html.push(` <input type="button" value="L" id="slider" class="play" name="${key}"/></li>`)
+                    teams.innerHTML += html.join("");
+                  });
+              }
+            </script>
+            <p style="list-style-type: decimal;" id="teams"></p>
+          </p1>
+          <h4 class="text-white mb-4">East</h4>
+          <p class="text-white-50">1. Eagles (0,0)<br>
+            2. Cowboys (0,0)<br>
+            3. Giants (0,0)<br>
+            4. Washington (0,0)
+          </p>
+          <h4 class="text-white mb-4">South</h4>
+          <p class="text-white-50">1. Saints (0,0)<br>
+            2. Falcons (0,0)<br>
+            3. Buccaneers (0,0)<br>
+            4. Panthers (0,0)
+          </p>
+          <h4 class="text-white mb-4">West</h4>
+          <p class="text-white-50">1. 49ers (0,0)<br>
+            2. Seahawks (0,0)<br>
+            3. Rams (0,0)<br>
+            4. Cardinals (0,0)
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AFC Section -->
+  <section id="AFC" class="afc-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <img src="../img/AFC.png" class="img-fluid" alt="">
+          <h2 class="text-white mb-4">AFC Standings</h2>
+          <h4 class="text-white mb-4">North</h4>
+          <p class="text-white-50">1. Ravens (0,0)<br>
+            2. Steelers (0,0)<br>
+            3. Browns (0,0)<br>
+            4. Bengals (0,0)
+          </p>
+          <h4 class="text-white mb-4">East</h4>
+          <p class="text-white-50">1. Patriots (0,0)<br>
+            2. Bills (0,0)<br>
+            3. Jets (0,0)<br>
+            4. Dolphins (0,0)
+          </p>
+          <h4 class="text-white mb-4">South</h4>
+          <p class="text-white-50">1. Texans (0,0)<br>
+            2. Titans (0,0)<br>
+            3. Colts (0,0)<br>
+            4. Jaguars (0,0)
+          </p>
+          <h4 class="text-white mb-4">West</h4>
+          <p class="text-white-50">1. Chiefs (0,0)<br>
+            2. Broncos (0,0)<br>
+            3. Raiders (0,0)<br>
+            4. Chargers (0,0)
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Playoff Section -->
+  <section id="playoff" class="playoff-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <img src="../img/NFL.png" class="img-fluid" alt="">
+          <br>
+          <br>
+          <h2 class="text-white mb-4">NFC Playoff</h2>
+          <p class="text-white-50">
+            <!-- 1. 49ers - West<br>
+            2. Packers - North<br>
+            3. Saints - South<br>
+            4. Eagles - East<br>
+            5. Seahawks - Wild Card<br>
+            6. Vikings - Wild Card -->
+          </p>
+          <h2 class="text-white mb-4">AFC Playoff</h2>
+          <p class="text-white-50">
+            <!-- 1. Ravens - North<br>
+            2. Chiefs - West<br>
+            3. Patriots - East<br>
+            4. Texans - South<br>
+            5. Bills - Wild Card<br>
+            6. Titans - Wild Card -->
+          </p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50">
+    <div class="container">
+      NFL Standings as of September 9th, 2020<br>
+      Blake Harris
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Cloud Firestore through Firebase
+    firebase.initializeApp({
+      apiKey: '### FIREBASE API KEY ###',
+      authDomain: '### FIREBASE AUTH DOMAIN ###',
+      projectId: '### CLOUD FIRESTORE PROJECT ID ###'
+    });
+
+    var db = firebase.firestore();
+  </script>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="../js/grayscale.min.js"></script>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAI2xgU5nHRyQqUvYzP3hhtE77UMwL1D-o",
+      authDomain: "standings-nfl.firebaseapp.com",
+      databaseURL: "https://standings-nfl.firebaseio.com",
+      projectId: "standings-nfl",
+      storageBucket: "standings-nfl.appspot.com",
+      messagingSenderId: "900208238260",
+      appId: "1:900208238260:web:e44741873d0e29ab5881e1",
+      measurementId: "G-W8QGD9XT08"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+
+</body>
+
+</html>
