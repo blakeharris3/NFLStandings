@@ -233,6 +233,13 @@
     </div>
   </section>
 
+
+
+
+
+
+
+  
   <!-- AFC Section -->
   <section id="AFC" class="afc-section text-center">
     <div class="container">
@@ -240,13 +247,47 @@
         <div class="col-lg-8 mx-auto">
           <img src="../img/AFC.png" class="img-fluid" alt="">
           <h2 class="text-white mb-4">AFC Standings</h2>
-          <h4 class="text-white mb-4">North</h4>
-          <p class="text-white-50">
-            1. Steelers (9,0)<br>
-            2. Ravens (6,3)<br>
-            3. Browns (6,3)<br>
-            4. Bengals (2,6,1)
-          </p>
+
+
+          <h4 class="text-white mb-4">NORTH</h4>
+          <p1 class="text-white-50">
+            <script>
+              window.addEventListener("load", function () { // when the page loads
+                const AfcNorthteams = document.getElementById("AfcNorthteams");
+                renderAFCNorthStandings(); // initialise the UL
+                teams.addEventListener("click", function (e) { // clicking W or L
+                  const targeted = e.target;
+                  if (targeted.classList.contains("play")) { // it's a button
+                    const result = targeted.value === "W" ? "win" : "lose"; // win or lose?
+                    results[targeted.name][result]++; // results["TEAMNAME"]["win"] for example
+                    renderAFCNorthStandings();
+                  }
+                })
+              })
+            </script>
+            <script>
+              const afcNresults = {
+                Ravens: { win: 6, lose: 4, tie: 0 },
+                Steelers: { win: 10, lose: 0, tie: 0},
+                Bengals: { win: 2, lose: 7, tie: 1 },
+                Browns: { win: 7, lose: 3, tie: 0},
+              }
+              const renderAFCNorthStandings = () => {
+                AFCNorth.innerHTML = "";
+                Object.keys(afcNresults).sort((a, b) => afcNresults[b].win - afcNresults[a].win)
+                  .forEach(key => {
+                    const html = [];
+                    html.push(`<li><span class="name">${key}</span>: (<span" id="${key}W">${afcNresults[key].win}</span>, <span id="${key}L">${afcNresults[key].lose}</span>, <span id="${key}T">${afcNresults[key].tie}</span>)`)
+                    // html.push(` <input type="button" value="W" id="slider" class="play" name="${key}"/>`)
+                    // html.push(` <input type="button" value="L" id="slider" class="play" name="${key}"/>`)
+                    // html.push(` <input type="button" value="T" id="slider" class="play" name="${key}"/></li>`)
+                    AFCNorth.innerHTML += html.join("");
+                  });
+              }
+            </script>
+            <p style="list-style-type: decimal;" id="AFCNorth"></p>
+          </p1>
+
           <h4 class="text-white mb-4">East</h4>
           <p class="text-white-50">
             1. Bills (7,3)<br>
@@ -367,3 +408,28 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
