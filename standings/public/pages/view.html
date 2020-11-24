@@ -91,7 +91,7 @@
             </script>
             <script>
               const nfcNresults = {
-                Packers: { win: 7, lose: 3, tie: 0},
+                Packers: { win: 7, lose: 3, tie: 0 },
                 Bears: { win: 5, lose: 5, tie: 0 },
                 Vikings: { win: 4, lose: 6, tie: 0 },
                 Lions: { win: 4, lose: 6, tie: 0 },
@@ -132,8 +132,8 @@
               const nfcEresults = {
                 Eagles: { win: 3, lose: 7, tie: 1 },
                 Giants: { win: 3, lose: 7, tie: 0 },
-                Washington: { win: 3, lose: 7, tie: 0},
-                Cowboys: { win: 3, lose: 7, tie: 0},
+                Washington: { win: 3, lose: 7, tie: 0 },
+                Cowboys: { win: 3, lose: 7, tie: 0 },
               }
               const renderNFCEastStandings = () => {
                 NFCEast.innerHTML = "";
@@ -171,8 +171,8 @@
               const nfcSresults = {
                 Saints: { win: 8, lose: 2, tie: 0 },
                 Buccaneers: { win: 7, lose: 4, tie: 0 },
-                Panthers: { win: 4, lose: 7, tie: 0},
-                Falcons: { win: 3, lose: 7, tie: 0},
+                Panthers: { win: 4, lose: 7, tie: 0 },
+                Falcons: { win: 3, lose: 7, tie: 0 },
               }
               const renderNFCSouthStandings = () => {
                 NFCSouth.innerHTML = "";
@@ -209,9 +209,9 @@
             <script>
               const nfcWresults = {
                 Cardinals: { win: 6, lose: 4, tie: 0 },
-                Rams: { win: 7, lose: 3, tie: 0},
+                Rams: { win: 7, lose: 3, tie: 0 },
                 Seahawks: { win: 7, lose: 3, tie: 0 },
-                "49ers": { win: 4, lose: 6, tie: 0},
+                "49ers": { win: 4, lose: 6, tie: 0 },
               }
               const renderNFCWestStandings = () => {
                 NFCWest.innerHTML = "";
@@ -239,7 +239,7 @@
 
 
 
-  
+
   <!-- AFC Section -->
   <section id="AFC" class="afc-section text-center">
     <div class="container">
@@ -268,9 +268,9 @@
             <script>
               const afcNresults = {
                 Ravens: { win: 6, lose: 4, tie: 0 },
-                Steelers: { win: 10, lose: 0, tie: 0},
+                Steelers: { win: 10, lose: 0, tie: 0 },
                 Bengals: { win: 2, lose: 7, tie: 1 },
-                Browns: { win: 7, lose: 3, tie: 0},
+                Browns: { win: 7, lose: 3, tie: 0 },
               }
               const renderAFCNorthStandings = () => {
                 AFCNorth.innerHTML = "";
@@ -288,27 +288,125 @@
             <p style="list-style-type: decimal;" id="AFCNorth"></p>
           </p1>
 
-          <h4 class="text-white mb-4">East</h4>
-          <p class="text-white-50">
-            1. Bills (7,3)<br>
-            2. Dolphins (6,3)<br>
-            3. Patriots (4,5)<br>
-            4. Jets (0,9)
-          </p>
-          <h4 class="text-white mb-4">South</h4>
-          <p class="text-white-50">
-            1. Colts (6,3)<br>
-            2. Titans (6,3)<br>
-            3. Texans (2,7)<br>
-            4. Jaguars (1,8)
-          </p>
-          <h4 class="text-white mb-4">West</h4>
-          <p class="text-white-50">
-            1. Chiefs (8,1)<br>
-            2. Raiders (6,3)<br>
-            3. Broncos (3,6)<br>
-            4. Chargers (2,7)
-          </p>
+
+          <h4 class="text-white mb-4">EAST</h4>
+          <p1 class="text-white-50">
+            <script>
+              window.addEventListener("load", function () { // when the page loads
+                const AfcEastteams = document.getElementById("AfcEastteams");
+                renderAFCEastStandings(); // initialise the UL
+                teams.addEventListener("click", function (e) { // clicking W or L
+                  const targeted = e.target;
+                  if (targeted.classList.contains("play")) { // it's a button
+                    const result = targeted.value === "W" ? "win" : "lose"; // win or lose?
+                    results[targeted.name][result]++; // results["TEAMNAME"]["win"] for example
+                    renderAFCEastStandings();
+                  }
+                })
+              })
+            </script>
+            <script>
+              const afcEresults = {
+                Bills: { win: 7, lose: 3, tie: 0 },
+                Patriots: { win: 4, lose: 6, tie: 0 },
+                Jets: { win: 0, lose: 10, tie: 0 },
+                Dolphins: { win: 6, lose: 4, tie: 0 },
+              }
+              const renderAFCEastStandings = () => {
+                AFCEast.innerHTML = "";
+                Object.keys(afcEresults).sort((a, b) => afcEresults[b].win - afcEresults[a].win)
+                  .forEach(key => {
+                    const html = [];
+                    html.push(`<li><span class="name">${key}</span>: (<span" id="${key}W">${afcEresults[key].win}</span>, <span id="${key}L">${afcEresults[key].lose}</span>, <span id="${key}T">${afcEresults[key].tie}</span>)`)
+                    // html.push(` <input type="button" value="W" id="slider" class="play" name="${key}"/>`)
+                    // html.push(` <input type="button" value="L" id="slider" class="play" name="${key}"/>`)
+                    // html.push(` <input type="button" value="T" id="slider" class="play" name="${key}"/></li>`)
+                    AFCEast.innerHTML += html.join("");
+                  });
+              }
+            </script>
+            <p style="list-style-type: decimal;" id="AFCEast"></p>
+          </p1>
+
+
+          <h4 class="text-white mb-4">SOUTH</h4>
+          <p1 class="text-white-50">
+            <script>
+              window.addEventListener("load", function () { // when the page loads
+                const AfcSouthteams = document.getElementById("AfcSouthteams");
+                renderAFCSouthStandings(); // initialise the UL
+                teams.addEventListener("click", function (e) { // clicking W or L
+                  const targeted = e.target;
+                  if (targeted.classList.contains("play")) { // it's a button
+                    const result = targeted.value === "W" ? "win" : "lose"; // win or lose?
+                    results[targeted.name][result]++; // results["TEAMNAME"]["win"] for example
+                    renderAFCSouthStandings();
+                  }
+                })
+              })
+            </script>
+            <script>
+              const afcSresults = {
+                Colts: { win: 7, lose: 3, tie: 0 },
+                Titans: { win: 7, lose: 3, tie: 0 },
+                Texans: { win: 3, lose: 7, tie: 0 },
+                Jaguars: { win: 1, lose: 9, tie: 0 },
+              }
+              const renderAFCSouthStandings = () => {
+                AFCSouth.innerHTML = "";
+                Object.keys(afcSresults).sort((a, b) => afcSresults[b].win - afcSresults[a].win)
+                  .forEach(key => {
+                    const html = [];
+                    html.push(`<li><span class="name">${key}</span>: (<span" id="${key}W">${afcSresults[key].win}</span>, <span id="${key}L">${afcSresults[key].lose}</span>, <span id="${key}T">${afcSresults[key].tie}</span>)`)
+                    // html.push(` <input type="button" value="W" id="slider" class="play" name="${key}"/>`)
+                    // html.push(` <input type="button" value="L" id="slider" class="play" name="${key}"/>`)
+                    // html.push(` <input type="button" value="T" id="slider" class="play" name="${key}"/></li>`)
+                    AFCSouth.innerHTML += html.join("");
+                  });
+              }
+            </script>
+            <p style="list-style-type: decimal;" id="AFCSouth"></p>
+          </p1>
+
+
+          <h4 class="text-white mb-4">WEST</h4>
+          <p1 class="text-white-50">
+            <script>
+              window.addEventListener("load", function () { // when the page loads
+                const AfcWestteams = document.getElementById("AfcWestteams");
+                renderAFCWestStandings(); // initialise the UL
+                teams.addEventListener("click", function (e) { // clicking W or L
+                  const targeted = e.target;
+                  if (targeted.classList.contains("play")) { // it's a button
+                    const result = targeted.value === "W" ? "win" : "lose"; // win or lose?
+                    results[targeted.name][result]++; // results["TEAMNAME"]["win"] for example
+                    renderAFCWestStandings();
+                  }
+                })
+              })
+            </script>
+            <script>
+              const afcWresults = {
+                Chiefs: { win: 9, lose: 1, tie: 0 },
+                Raiders: { win: 6, lose: 4, tie: 0 },
+                Chargers: { win: 3, lose: 7, tie: 0 },
+                Broncos: { win: 4, lose: 6, tie: 0 },
+              }
+              const renderAFCWestStandings = () => {
+                AFCWest.innerHTML = "";
+                Object.keys(afcWresults).sort((a, b) => afcWresults[b].win - afcWresults[a].win)
+                  .forEach(key => {
+                    const html = [];
+                    html.push(`<li><span class="name">${key}</span>: (<span" id="${key}W">${afcWresults[key].win}</span>, <span id="${key}L">${afcWresults[key].lose}</span>, <span id="${key}T">${afcWresults[key].tie}</span>)`)
+                    // html.push(` <input type="button" value="W" id="slider" class="play" name="${key}"/>`)
+                    // html.push(` <input type="button" value="L" id="slider" class="play" name="${key}"/>`)
+                    // html.push(` <input type="button" value="T" id="slider" class="play" name="${key}"/></li>`)
+                    AFCWest.innerHTML += html.join("");
+                  });
+              }
+            </script>
+            <p style="list-style-type: decimal;" id="AFCWest"></p>
+          </p1>
         </div>
       </div>
     </div>
@@ -353,7 +451,7 @@
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
     <div class="container">
-      NFL Standings as of November 18th, 2020<br>
+      NFL Standings as of November 24th, 2020<br>
       Blake Harris
     </div>
   </footer>
@@ -408,28 +506,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
