@@ -80,6 +80,8 @@
           <h4 class="text-white mb-4">North</h4>
           <p1 class="text-white-50">
 
+
+            <!-- ACTUAL 85-99 -->
             <!-- Win Loss Button -->
             <!-- <script>
               window.addEventListener("load", function () { // when the page loads
@@ -95,7 +97,26 @@
                 })
               })
             </script> -->
+
             <script>
+              window.addEventListener("load", function () { // when the page loads
+                const teams = document.getElementById("teams");
+                renderNFCNorthStandings(); // initialise the UL
+                teams.addEventListener("click", function (e) { // clicking W or L
+                  const targeted = e.target;
+                  if (targeted.classList.contains("play")) { // it's a button
+                    const result = targeted.value === "W" ? "win" : "lose"; // win or lose?
+                    results[targeted.name][result]++; // results["TEAMNAME"]["win"] for example
+                    renderNFCNorthStandings();
+                  }
+                })
+              })
+            </script>
+
+
+
+            <!-- ACTUAL  102-124-->
+            <!-- <script>
               
               const results = {
                 Packers: { win: 7, lose: 2 },
@@ -117,13 +138,42 @@
               }
             </script>
             <p style="list-style-type: decimal;" id="teams"></p>
+          </p1> -->
+
+
+            <script>
+
+              const nfcNresults = {
+                Packers: { win: 7, lose: 3 },
+                Bears: { win: 5, lose: 5 },
+                Vikings: { win: 4, lose: 6 },
+                Lions: { win: 4, lose: 6 },
+              }
+
+              const renderNFCNorthStandings = () => {
+                NFCNorth.innerHTML = "";
+                Object.keys(nfcNresults).sort((a, b) => nfcNresults[b].win - nfcNresults[a].win)
+                  .forEach(key => {
+                    const html = [];
+                    html.push(`<li><span class="name">${key}</span>: (<span" id="${key}W">${nfcNresults[key].win}</span>, <span id="${key}L">${nfcNresults[key].lose}</span>)`)
+                    // html.push(` <input type="button" value="W" id="slider" class="play" name="${key}"/>`)
+                    // html.push(` <input type="button" value="L" id="slider" class="play" name="${key}"/></li>`)
+                    NFCNorth.innerHTML += html.join("");
+                  });
+              }
+            </script>
+            <p style="list-style-type: decimal;" id="NFCNorth"></p>
           </p1>
+
+
+
+
           <h4 class="text-white mb-4">East</h4>
           <p class="text-white-50">
-            1. Eagles (3,5,1)<br>
+            1. Eagles (3,6,1)<br>
             2. Giants (3,7)<br>
-            3. Washington (2,7)<br>
-            4. Cowboys (2,7)
+            3. Washington (3,7)<br>
+            4. Cowboys (3,7)
           <h4 class="text-white mb-4">South</h4>
           <p class="text-white-50">
             1. Saints (7,2)<br>
