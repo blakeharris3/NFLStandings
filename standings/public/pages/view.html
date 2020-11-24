@@ -73,31 +73,8 @@
         <div class="col-lg-8 mx-auto">
           <img src="../img/NFC.png" class="img-fluid" alt="">
           <h2 class="text-white mb-4">NFC Standings</h2>
-
-
-
-
-          <h4 class="text-white mb-4">North</h4>
+          <h4 class="text-white mb-4">NORTH</h4>
           <p1 class="text-white-50">
-
-
-            <!-- ACTUAL 85-99 -->
-            <!-- Win Loss Button -->
-            <!-- <script>
-              window.addEventListener("load", function () { // when the page loads
-                const teams = document.getElementById("teams");
-                renderStandings(); // initialise the UL
-                teams.addEventListener("click", function (e) { // clicking W or L
-                  const targeted = e.target;
-                  if (targeted.classList.contains("play")) { // it's a button
-                    const result = targeted.value === "W" ? "win" : "lose"; // win or lose?
-                    results[targeted.name][result]++; // results["TEAMNAME"]["win"] for example
-                    renderStandings();
-                  }
-                })
-              })
-            </script> -->
-
             <script>
               window.addEventListener("load", function () { // when the page loads
                 const teams = document.getElementById("teams");
@@ -112,50 +89,19 @@
                 })
               })
             </script>
-
-
-
-            <!-- ACTUAL  102-124-->
-            <!-- <script>
-              
-              const results = {
-                Packers: { win: 7, lose: 2 },
-                Bears: { win: 5, lose: 5 },
-                Vikings: { win: 4, lose: 5 },
-                Lions: { win: 4, lose: 5 },
-              }
-
-              const renderStandings = () => {
-                teams.innerHTML = "";
-                Object.keys(results).sort((a, b) => results[b].win - results[a].win)
-                  .forEach(key => {
-                    const html = [];
-                    html.push(`<li><span class="name">${key}</span>: (<span" id="${key}W">${results[key].win}</span>, <span id="${key}L">${results[key].lose}</span>)`)
-                    // html.push(` <input type="button" value="W" id="slider" class="play" name="${key}"/>`)
-                    // html.push(` <input type="button" value="L" id="slider" class="play" name="${key}"/></li>`)
-                    teams.innerHTML += html.join("");
-                  });
-              }
-            </script>
-            <p style="list-style-type: decimal;" id="teams"></p>
-          </p1> -->
-
-
             <script>
-
               const nfcNresults = {
-                Packers: { win: 7, lose: 3 },
-                Bears: { win: 5, lose: 5 },
-                Vikings: { win: 4, lose: 6 },
-                Lions: { win: 4, lose: 6 },
+                Packers: { win: 7, lose: 3, tie: 0},
+                Bears: { win: 5, lose: 5, tie: 0 },
+                Vikings: { win: 4, lose: 6, tie: 0 },
+                Lions: { win: 4, lose: 6, tie: 0 },
               }
-
               const renderNFCNorthStandings = () => {
                 NFCNorth.innerHTML = "";
                 Object.keys(nfcNresults).sort((a, b) => nfcNresults[b].win - nfcNresults[a].win)
                   .forEach(key => {
                     const html = [];
-                    html.push(`<li><span class="name">${key}</span>: (<span" id="${key}W">${nfcNresults[key].win}</span>, <span id="${key}L">${nfcNresults[key].lose}</span>)`)
+                    html.push(`<li><span class="name">${key}</span>: (<span" id="${key}W">${nfcNresults[key].win}</span>, <span id="${key}L">${nfcNresults[key].lose}</span>, <span id="${key}T">${nfcNresults[key].tie}</span>)`)
                     // html.push(` <input type="button" value="W" id="slider" class="play" name="${key}"/>`)
                     // html.push(` <input type="button" value="L" id="slider" class="play" name="${key}"/></li>`)
                     NFCNorth.innerHTML += html.join("");
@@ -166,28 +112,122 @@
           </p1>
 
 
+          <h4 class="text-white mb-4">EAST</h4>
+          <p1 class="text-white-50">
+            <script>
+              window.addEventListener("load", function () { // when the page loads
+                const NfcEastteams = document.getElementById("NfcEastteams");
+                renderNFCEastStandings(); // initialise the UL
+                teams.addEventListener("click", function (e) { // clicking W or L
+                  const targeted = e.target;
+                  if (targeted.classList.contains("play")) { // it's a button
+                    const result = targeted.value === "W" ? "win" : "lose"; // win or lose?
+                    results[targeted.name][result]++; // results["TEAMNAME"]["win"] for example
+                    renderNFCEastStandings();
+                  }
+                })
+              })
+            </script>
+            <script>
+              const nfcEresults = {
+                Eagles: { win: 3, lose: 7, tie: 1 },
+                Giants: { win: 3, lose: 7, tie: 0 },
+                Washington: { win: 3, lose: 7, tie: 0},
+                Cowboys: { win: 3, lose: 7, tie: 0},
+              }
+              const renderNFCEastStandings = () => {
+                NFCEast.innerHTML = "";
+                Object.keys(nfcEresults).sort((a, b) => nfcEresults[b].win - nfcEresults[a].win)
+                  .forEach(key => {
+                    const html = [];
+                    html.push(`<li><span class="name">${key}</span>: (<span" id="${key}W">${nfcEresults[key].win}</span>, <span id="${key}L">${nfcEresults[key].lose}</span>, <span id="${key}T">${nfcEresults[key].tie}</span>)`)
+                    // html.push(` <input type="button" value="W" id="slider" class="play" name="${key}"/>`)
+                    // html.push(` <input type="button" value="L" id="slider" class="play" name="${key}"/>`)
+                    // html.push(` <input type="button" value="T" id="slider" class="play" name="${key}"/></li>`)
+                    NFCEast.innerHTML += html.join("");
+                  });
+              }
+            </script>
+            <p style="list-style-type: decimal;" id="NFCEast"></p>
+          </p1>
 
+          <h4 class="text-white mb-4">SOUTH</h4>
+          <p1 class="text-white-50">
+            <script>
+              window.addEventListener("load", function () { // when the page loads
+                const NfcSouthteams = document.getElementById("NfcSouthteams");
+                renderNFCSouthStandings(); // initialise the UL
+                teams.addEventListener("click", function (e) { // clicking W or L
+                  const targeted = e.target;
+                  if (targeted.classList.contains("play")) { // it's a button
+                    const result = targeted.value === "W" ? "win" : "lose"; // win or lose?
+                    results[targeted.name][result]++; // results["TEAMNAME"]["win"] for example
+                    renderNFCSouthStandings();
+                  }
+                })
+              })
+            </script>
+            <script>
+              const nfcSresults = {
+                Saints: { win: 8, lose: 2, tie: 0 },
+                Buccaneers: { win: 7, lose: 4, tie: 0 },
+                Panthers: { win: 4, lose: 7, tie: 0},
+                Falcons: { win: 3, lose: 7, tie: 0},
+              }
+              const renderNFCSouthStandings = () => {
+                NFCSouth.innerHTML = "";
+                Object.keys(nfcSresults).sort((a, b) => nfcSresults[b].win - nfcSresults[a].win)
+                  .forEach(key => {
+                    const html = [];
+                    html.push(`<li><span class="name">${key}</span>: (<span" id="${key}W">${nfcSresults[key].win}</span>, <span id="${key}L">${nfcSresults[key].lose}</span>, <span id="${key}T">${nfcSresults[key].tie}</span>)`)
+                    // html.push(` <input type="button" value="W" id="slider" class="play" name="${key}"/>`)
+                    // html.push(` <input type="button" value="L" id="slider" class="play" name="${key}"/>`)
+                    // html.push(` <input type="button" value="T" id="slider" class="play" name="${key}"/></li>`)
+                    NFCSouth.innerHTML += html.join("");
+                  });
+              }
+            </script>
+            <p style="list-style-type: decimal;" id="NFCSouth"></p>
+          </p1>
 
-          <h4 class="text-white mb-4">East</h4>
-          <p class="text-white-50">
-            1. Eagles (3,6,1)<br>
-            2. Giants (3,7)<br>
-            3. Washington (3,7)<br>
-            4. Cowboys (3,7)
-          <h4 class="text-white mb-4">South</h4>
-          <p class="text-white-50">
-            1. Saints (7,2)<br>
-            2. Buccaneers (7,3)<br>
-            3. Falcons (3,6)<br>
-            4. Panthers (3,7)
-          </p>
-          <h4 class="text-white mb-4">West</h4>
-          <p class="text-white-50">
-            1. Cardinals (6,3)<br>
-            2. Rams (6,3)<br>
-            3. Seahawks (6,3)<br>
-            4. 49ers (4,6)
-          </p>
+          <h4 class="text-white mb-4">WEST</h4>
+          <p1 class="text-white-50">
+            <script>
+              window.addEventListener("load", function () { // when the page loads
+                const NfcWestteams = document.getElementById("NfcWestteams");
+                renderNFCWestStandings(); // initialise the UL
+                teams.addEventListener("click", function (e) { // clicking W or L
+                  const targeted = e.target;
+                  if (targeted.classList.contains("play")) { // it's a button
+                    const result = targeted.value === "W" ? "win" : "lose"; // win or lose?
+                    results[targeted.name][result]++; // results["TEAMNAME"]["win"] for example
+                    renderNFCWestStandings();
+                  }
+                })
+              })
+            </script>
+            <script>
+              const nfcWresults = {
+                Cardinals: { win: 6, lose: 4, tie: 0 },
+                Rams: { win: 7, lose: 3, tie: 0},
+                Seahawks: { win: 7, lose: 3, tie: 0 },
+                "49ers": { win: 4, lose: 6, tie: 0},
+              }
+              const renderNFCWestStandings = () => {
+                NFCWest.innerHTML = "";
+                Object.keys(nfcWresults).sort((a, b) => nfcWresults[b].win - nfcWresults[a].win)
+                  .forEach(key => {
+                    const html = [];
+                    html.push(`<li><span class="name">${key}</span>: (<span" id="${key}W">${nfcWresults[key].win}</span>, <span id="${key}L">${nfcWresults[key].lose}</span>, <span id="${key}T">${nfcWresults[key].tie}</span>)`)
+                    // html.push(` <input type="button" value="W" id="slider" class="play" name="${key}"/>`)
+                    // html.push(` <input type="button" value="L" id="slider" class="play" name="${key}"/>`)
+                    // html.push(` <input type="button" value="T" id="slider" class="play" name="${key}"/></li>`)
+                    NFCWest.innerHTML += html.join("");
+                  });
+              }
+            </script>
+            <p style="list-style-type: decimal;" id="NFCWest"></p>
+          </p1>
         </div>
       </div>
     </div>
